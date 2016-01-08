@@ -9,7 +9,7 @@
 
 using namespace std;
 
-vector<string>& split(const string&, char, vector<string>&);
+vector<string> split(const string&, char);
 
 class Person {
 
@@ -49,7 +49,7 @@ int main() {
    ifstream myfile ("test");
    if (myfile.is_open()) {
       while (getline(myfile, line)) {
-         vector<string> names = split(line, ' ', names);
+         vector<string> names = split(line, ' ');
          if (names.size() == 1) {
             Person newPerson(names.at(0));
             people.push_back(newPerson);
@@ -61,14 +61,12 @@ int main() {
             }
          }
       }
-
    }
-
 }
 
 
-
-vector<string>& split(const string& s, char delim, vector<string>& elems) {
+vector<string> split(const string& s, char delim) {
+    vector<string> elems;
     stringstream ss(s);
     string item;
     while (getline(ss, item, delim)) {
