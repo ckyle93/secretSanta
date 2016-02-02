@@ -20,8 +20,8 @@ ss : secretSanta.o
 	${GPP} -c $<
 
 ci :
-	git add .
+	git add secretSanta
 
 clean :
 	-rm *.o
-
+	-rm secretSanta
